@@ -1,14 +1,16 @@
 export default function NationGraphLogo({
   className = "",
   size = "default",
+  iconOnly = false,
 }: {
   className?: string;
   size?: "small" | "default" | "large" | "hero";
+  iconOnly?: boolean;
 }) {
   const sizes = {
-    small: { icon: 28, text: "text-lg", gap: "gap-2" },
-    default: { icon: 36, text: "text-2xl", gap: "gap-2.5" },
-    large: { icon: 48, text: "text-4xl", gap: "gap-3" },
+    small: { icon: 24, text: "text-lg", gap: "gap-2" },
+    default: { icon: 32, text: "text-2xl", gap: "gap-2.5" },
+    large: { icon: 44, text: "text-4xl", gap: "gap-3" },
     hero: { icon: 72, text: "text-6xl md:text-7xl", gap: "gap-4" },
   };
 
@@ -16,39 +18,46 @@ export default function NationGraphLogo({
 
   return (
     <div className={`flex items-center ${s.gap} ${className}`}>
-      {/* Bar chart icon */}
+      {/* Stylized N icon — connected dots forming an N/graph shape */}
       <svg
         width={s.icon}
         height={s.icon}
-        viewBox="0 0 40 40"
+        viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Row 1 (top) */}
-        <rect x="0" y="0" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.4" />
-        <rect x="10" y="0" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.5" />
-        <rect x="20" y="0" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.6" />
-        <rect x="30" y="0" width="8" height="8" rx="1.5" fill="#e8890a" />
-        {/* Row 2 */}
-        <rect x="0" y="10" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.4" />
-        <rect x="10" y="10" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.6" />
-        <rect x="20" y="10" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="30" y="10" width="8" height="8" rx="1.5" fill="#e8890a" />
-        {/* Row 3 */}
-        <rect x="0" y="20" width="8" height="8" rx="1.5" fill="#bf5700" opacity="0.5" />
-        <rect x="10" y="20" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="20" y="20" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="30" y="20" width="8" height="8" rx="1.5" fill="#e8890a" />
-        {/* Row 4 (bottom) */}
-        <rect x="0" y="30" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="10" y="30" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="20" y="30" width="8" height="8" rx="1.5" fill="#e8890a" />
-        <rect x="30" y="30" width="8" height="8" rx="1.5" fill="#e8890a" />
+        {/* Lines connecting the dots */}
+        <path
+          d="M10 38 L10 16 L24 32 L24 16"
+          stroke="#e8930c"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        {/* Additional right stroke */}
+        <path
+          d="M24 16 L38 32 L38 10"
+          stroke="#e8930c"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        {/* Dots at each vertex */}
+        <circle cx="10" cy="38" r="4.5" fill="#e8930c" />
+        <circle cx="10" cy="16" r="4.5" fill="#e8930c" />
+        <circle cx="24" cy="32" r="4.5" fill="#e8930c" />
+        <circle cx="24" cy="16" r="4.5" fill="#e8930c" />
+        <circle cx="38" cy="32" r="4.5" fill="#e8930c" />
+        <circle cx="38" cy="10" r="4.5" fill="#e8930c" />
       </svg>
       {/* Text */}
-      <span className={`${s.text} font-brand font-bold tracking-tight text-white`}>
-        <span className="font-semibold">Nation</span>Graph
-      </span>
+      {!iconOnly && (
+        <span className={`${s.text} font-brand font-semibold tracking-tight text-white`}>
+          NationGraph
+        </span>
+      )}
     </div>
   );
 }

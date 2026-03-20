@@ -29,17 +29,23 @@ export default function Home() {
         }`}
       >
         {/* Hero */}
-        <div className="bg-gradient-to-br from-[#1b5e20] to-[#0d3311] rounded-2xl p-8 md:p-12 text-white mb-8 border border-[#2e7d32]/30">
-          <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#1b5e20] to-[#0d2818] rounded-2xl p-8 md:p-12 text-white mb-8 border border-[#2e7d32]/30">
+          {/* Subtle network pattern */}
+          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 800 300" fill="none" preserveAspectRatio="xMidYMid slice">
+            <path d="M-20 50 Q100 50 150 100 Q200 150 350 150 Q500 150 550 100 Q600 50 750 50 Q900 50 820 100" stroke="#2e7d32" strokeWidth="1.5" fill="none"/>
+            <path d="M-20 150 Q80 150 150 200 Q220 250 400 250 Q580 250 650 200 Q720 150 820 150" stroke="#bf5700" strokeWidth="1" fill="none"/>
+            <path d="M-20 220 Q120 220 200 170 Q280 120 420 120 Q560 120 640 170 Q720 220 820 220" stroke="#2e7d32" strokeWidth="1" fill="none"/>
+          </svg>
+          <div className="relative z-10 flex items-center justify-between flex-wrap gap-4 mb-4">
             <NationGraphLogo size="default" />
-            <span className="text-xs font-brand tracking-widest uppercase text-[#bf5700] bg-[#bf5700]/10 px-3 py-1 rounded-full">
+            <span className="text-xs font-brand tracking-[0.2em] uppercase text-[#e8930c] bg-[#e8930c]/10 px-3 py-1 rounded-full border border-[#e8930c]/20">
               SDR Training
             </span>
           </div>
-          <p className="text-green-200/70 text-lg font-brand">
+          <p className="relative z-10 text-white/50 text-lg font-brand">
             Interactive onboarding program — 7 modules, ~5 hours total
           </p>
-          <div className="mt-6 bg-black/20 rounded-xl p-4 border border-white/5">
+          <div className="relative z-10 mt-6 bg-black/20 rounded-xl p-4 border border-white/5">
             <ProgressBar />
           </div>
         </div>
