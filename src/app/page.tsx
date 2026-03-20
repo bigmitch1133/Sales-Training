@@ -1,65 +1,148 @@
-import Image from "next/image";
+"use client";
+
+import { modules } from "@/data/modules";
+import { useProgress } from "@/components/ProgressProvider";
+import ProgressBar from "@/components/ProgressBar";
+import Link from "next/link";
+
+const moduleIcons = ["📊", "🎯", "🏛️", "📞", "📋", "🔍", "🏆"];
 
 export default function Home() {
+  const { completedModules, quizScores, isModuleUnlocked, resetProgress } =
+    useProgress();
+
+  const allComplete =
+    completedModules.length === modules.length &&
+    modules.every((m) => (quizScores[m.id] || 0) >= 80);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="max-w-5xl mx-auto p-4 md:p-8">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">
+          NationGraph SDR Training
+        </h1>
+        <p className="text-blue-100 text-lg">
+          Interactive onboarding program — 7 modules, ~5 hours total
+        </p>
+        <div className="mt-6 bg-white/10 rounded-xl p-4">
+          <ProgressBar />
+        </div>
+      </div>
+
+      {allComplete && (
+        <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8 text-center">
+          <div className="text-4xl mb-2">🎉</div>
+          <h2 className="text-2xl font-bold text-green-800">
+            Training Complete!
+          </h2>
+          <p className="text-green-700 mt-1">
+            You&apos;ve completed all 7 modules. You&apos;re ready to hit the
+            ground running!
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      )}
+
+      {/* Module Grid */}
+      <div className="grid gap-4">
+        {modules.map((mod) => {
+          const unlocked = isModuleUnlocked(mod.id);
+          const score = quizScores[mod.id];
+          const passed = score !== undefined && score >= 80;
+          const completed = completedModules.includes(mod.id);
+
+          return (
+            <Link
+              key={mod.id}
+              href={unlocked ? `/module/${mod.id}` : "#"}
+              className={`block rounded-xl border-2 p-6 transition-all ${
+                !unlocked
+                  ? "border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed"
+                  : completed
+                  ? "border-green-200 bg-green-50 hover:border-green-300 hover:shadow-md"
+                  : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-md"
+              }`}
+              onClick={(e) => !unlocked && e.preventDefault()}
+            >
+              <div className="flex items-start gap-4">
+                <div
+                  className={`text-3xl flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
+                    completed
+                      ? "bg-green-100"
+                      : unlocked
+                      ? "bg-blue-100"
+                      : "bg-gray-100"
+                  }`}
+                >
+                  {!unlocked ? "🔒" : moduleIcons[mod.id - 1]}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-semibold text-gray-500 uppercase">
+                      Module {mod.id}
+                    </span>
+                    <span className="text-xs text-gray-400">
+                      {mod.estimatedTime}
+                    </span>
+                    {passed && (
+                      <span className="text-xs bg-green-200 text-green-800 px-2 py-0.5 rounded-full font-medium">
+                        Passed — {score}%
+                      </span>
+                    )}
+                    {score !== undefined && !passed && (
+                      <span className="text-xs bg-red-200 text-red-800 px-2 py-0.5 rounded-full font-medium">
+                        {score}% — Retry needed
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {mod.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {mod.sections.length} sections + quiz ({mod.quiz.length}{" "}
+                    questions)
+                  </p>
+                </div>
+                {unlocked && (
+                  <div className="flex-shrink-0 text-gray-400">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Footer */}
+      <div className="mt-12 text-center">
+        <button
+          onClick={() => {
+            if (
+              window.confirm(
+                "Reset all progress? This cannot be undone."
+              )
+            ) {
+              resetProgress();
+            }
+          }}
+          className="text-sm text-gray-400 hover:text-red-500 transition-colors"
+        >
+          Reset Progress
+        </button>
+      </div>
     </div>
   );
 }
