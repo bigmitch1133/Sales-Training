@@ -96,8 +96,8 @@ export default function ModulePage() {
           <Quiz
             questions={mod.quiz}
             moduleId={moduleId}
-            onComplete={(score) => {
-              saveQuizScore(moduleId, score);
+            onComplete={(score, answers) => {
+              saveQuizScore(moduleId, score, answers);
             }}
           />
           {passed && (

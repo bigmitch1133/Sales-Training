@@ -5,15 +5,29 @@ import {
   useContext,
   useState,
   useEffect,
+  useRef,
+  useCallback,
   ReactNode,
 } from "react";
+
+export interface QuizAnswerRecord {
+  questionId: string;
+  selected: unknown;
+  correct: boolean;
+  timestamp: string;
+}
 
 interface ProgressContextType {
   completedModules: number[];
   quizScores: Record<number, number>;
   completedSections: Record<number, string[]>;
+  quizAnswers: Record<number, QuizAnswerRecord[]>;
   markSectionComplete: (moduleId: number, sectionId: string) => void;
-  saveQuizScore: (moduleId: number, score: number) => void;
+  saveQuizScore: (
+    moduleId: number,
+    score: number,
+    answers?: QuizAnswerRecord[]
+  ) => void;
   isModuleUnlocked: (moduleId: number) => boolean;
   resetProgress: () => void;
 }
@@ -36,42 +50,81 @@ export default function ProgressProvider({
   const [completedSections, setCompletedSections] = useState<
     Record<number, string[]>
   >({});
+  const [quizAnswers, setQuizAnswers] = useState<
+    Record<number, QuizAnswerRecord[]>
+  >({});
   const [loaded, setLoaded] = useState(false);
+  const syncTimeout = useRef<ReturnType<typeof setTimeout>>(null);
 
+  // Load from server on mount
   useEffect(() => {
-    const saved = localStorage.getItem("ng-training-progress");
-    if (saved) {
-      const data = JSON.parse(saved);
-      setCompletedModules(data.completedModules || []);
-      setQuizScores(data.quizScores || {});
-      setCompletedSections(data.completedSections || {});
-    }
-    setLoaded(true);
+    fetch("/api/progress")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data) {
+          setCompletedModules(data.completedModules || []);
+          setQuizScores(data.quizScores || {});
+          setCompletedSections(data.completedSections || {});
+          setQuizAnswers(data.quizAnswers || {});
+        }
+      })
+      .finally(() => setLoaded(true));
   }, []);
 
-  useEffect(() => {
-    if (!loaded) return;
-    localStorage.setItem(
-      "ng-training-progress",
-      JSON.stringify({ completedModules, quizScores, completedSections })
-    );
-  }, [completedModules, quizScores, completedSections, loaded]);
+  // Debounced sync to server
+  const syncToServer = useCallback(
+    (data: Record<string, unknown>) => {
+      if (syncTimeout.current) clearTimeout(syncTimeout.current);
+      syncTimeout.current = setTimeout(() => {
+        fetch("/api/progress", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }).catch(() => {});
+      }, 300);
+    },
+    []
+  );
 
   const markSectionComplete = (moduleId: number, sectionId: string) => {
     setCompletedSections((prev) => {
       const sections = prev[moduleId] || [];
       if (sections.includes(sectionId)) return prev;
-      return { ...prev, [moduleId]: [...sections, sectionId] };
+      const updated = { ...prev, [moduleId]: [...sections, sectionId] };
+      syncToServer({ completedSections: updated });
+      return updated;
     });
   };
 
-  const saveQuizScore = (moduleId: number, score: number) => {
-    setQuizScores((prev) => ({ ...prev, [moduleId]: score }));
-    if (score >= 80) {
-      setCompletedModules((prev) =>
-        prev.includes(moduleId) ? prev : [...prev, moduleId]
-      );
-    }
+  const saveQuizScore = (
+    moduleId: number,
+    score: number,
+    answers?: QuizAnswerRecord[]
+  ) => {
+    setQuizScores((prev) => {
+      const updated = { ...prev, [moduleId]: score };
+      const newCompleted =
+        score >= 80
+          ? Array.from(
+              new Set([...completedModules, moduleId])
+            )
+          : completedModules;
+
+      if (score >= 80) setCompletedModules(newCompleted);
+
+      const newAnswers = answers
+        ? { ...quizAnswers, [moduleId]: answers }
+        : quizAnswers;
+      if (answers) setQuizAnswers(newAnswers);
+
+      syncToServer({
+        quizScores: updated,
+        completedModules: newCompleted,
+        quizAnswers: newAnswers,
+      });
+
+      return updated;
+    });
   };
 
   const isModuleUnlocked = (moduleId: number) => {
@@ -83,7 +136,13 @@ export default function ProgressProvider({
     setCompletedModules([]);
     setQuizScores({});
     setCompletedSections({});
-    localStorage.removeItem("ng-training-progress");
+    setQuizAnswers({});
+    syncToServer({
+      completedModules: [],
+      quizScores: {},
+      completedSections: {},
+      quizAnswers: {},
+    });
   };
 
   if (!loaded) return null;
@@ -94,6 +153,7 @@ export default function ProgressProvider({
         completedModules,
         quizScores,
         completedSections,
+        quizAnswers,
         markSectionComplete,
         saveQuizScore,
         isModuleUnlocked,

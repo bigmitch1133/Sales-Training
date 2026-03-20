@@ -2,11 +2,12 @@
 
 import { useState, useCallback } from "react";
 import { QuizQuestion } from "@/data/modules";
+import type { QuizAnswerRecord } from "@/components/ProgressProvider";
 
 interface QuizProps {
   questions: QuizQuestion[];
   moduleId: number;
-  onComplete: (score: number) => void;
+  onComplete: (score: number, answers?: QuizAnswerRecord[]) => void;
 }
 
 function MultipleChoice({
@@ -14,7 +15,7 @@ function MultipleChoice({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -22,7 +23,7 @@ function MultipleChoice({
   const handleSubmit = () => {
     if (selected === null) return;
     setSubmitted(true);
-    onAnswer(selected === q.correct);
+    onAnswer(selected === q.correct, selected);
   };
 
   return (
@@ -84,7 +85,7 @@ function TrueFalse({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const [selected, setSelected] = useState<boolean | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -92,7 +93,7 @@ function TrueFalse({
   const handleSubmit = () => {
     if (selected === null) return;
     setSubmitted(true);
-    onAnswer(selected === q.correct);
+    onAnswer(selected === q.correct, selected);
   };
 
   return (
@@ -151,7 +152,7 @@ function SelectAll({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const [selected, setSelected] = useState<number[]>([]);
   const [submitted, setSubmitted] = useState(false);
@@ -169,7 +170,7 @@ function SelectAll({
     const isCorrect =
       selected.length === correctArr.length &&
       selected.every((s) => correctArr.includes(s));
-    onAnswer(isCorrect);
+    onAnswer(isCorrect, selected);
   };
 
   const correctArr = q.correct as number[];
@@ -237,7 +238,7 @@ function Matching({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const pairs = q.pairs!;
   const [matches, setMatches] = useState<Record<number, number>>({});
@@ -262,7 +263,7 @@ function Matching({
   const handleSubmit = () => {
     setSubmitted(true);
     const allCorrect = pairs.every((_, i) => matches[i] === i);
-    onAnswer(allCorrect);
+    onAnswer(allCorrect, matches);
   };
 
   return (
@@ -345,7 +346,7 @@ function Ordering({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const [order, setOrder] = useState(() => {
     const indices = q.items!.map((_, i) => i);
@@ -376,7 +377,7 @@ function Ordering({
     const isCorrect = order.every(
       (itemIdx, pos) => itemIdx === q.correct_order![pos]
     );
-    onAnswer(isCorrect);
+    onAnswer(isCorrect, order);
   };
 
   return (
@@ -463,14 +464,14 @@ function FreeResponse({
   onAnswer,
 }: {
   q: QuizQuestion;
-  onAnswer: (correct: boolean) => void;
+  onAnswer: (correct: boolean, selected?: unknown) => void;
 }) {
   const [response, setResponse] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
     setSubmitted(true);
-    onAnswer(response.trim().length >= 20);
+    onAnswer(response.trim().length >= 20, response);
   };
 
   return (
@@ -520,14 +521,24 @@ function FreeResponse({
 export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
   const [currentQ, setCurrentQ] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);
+  const [answerRecords, setAnswerRecords] = useState<QuizAnswerRecord[]>([]);
   const [finished, setFinished] = useState(false);
 
   const handleAnswer = useCallback(
-    (correct: boolean) => {
+    (correct: boolean, selected?: unknown) => {
       const newResults = [...results, correct];
       setResults(newResults);
+      setAnswerRecords((prev) => [
+        ...prev,
+        {
+          questionId: questions[currentQ].id,
+          selected: selected ?? null,
+          correct,
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     },
-    [results]
+    [results, currentQ, questions]
   );
 
   const handleNext = () => {
@@ -538,7 +549,7 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
       const score = Math.round(
         (results.filter(Boolean).length / questions.length) * 100
       );
-      onComplete(score);
+      onComplete(score, answerRecords);
     }
   };
 
