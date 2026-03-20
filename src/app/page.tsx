@@ -18,11 +18,11 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto p-4 md:p-8">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 text-white mb-8">
+      <div className="bg-gradient-to-br from-[#1b5e20] to-[#0d3311] rounded-2xl p-8 md:p-12 text-white mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">
           NationGraph SDR Training
         </h1>
-        <p className="text-blue-100 text-lg">
+        <p className="text-green-200 text-lg">
           Interactive onboarding program — 7 modules, ~5 hours total
         </p>
         <div className="mt-6 bg-white/10 rounded-xl p-4">
@@ -31,12 +31,12 @@ export default function Home() {
       </div>
 
       {allComplete && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8 text-center">
+        <div className="bg-green-50 border border-green-300 rounded-xl p-6 mb-8 text-center">
           <div className="text-4xl mb-2">🎉</div>
-          <h2 className="text-2xl font-bold text-green-800">
+          <h2 className="text-2xl font-bold text-[#1b5e20]">
             Training Complete!
           </h2>
-          <p className="text-green-700 mt-1">
+          <p className="text-[#2e7d32] mt-1">
             You&apos;ve completed all 7 modules. You&apos;re ready to hit the
             ground running!
           </p>
@@ -57,10 +57,10 @@ export default function Home() {
               href={unlocked ? `/module/${mod.id}` : "#"}
               className={`block rounded-xl border-2 p-6 transition-all ${
                 !unlocked
-                  ? "border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed"
+                  ? "border-gray-300 bg-gray-100 opacity-60 cursor-not-allowed"
                   : completed
-                  ? "border-green-200 bg-green-50 hover:border-green-300 hover:shadow-md"
-                  : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-md"
+                  ? "border-[#2e7d32] bg-green-50 hover:border-[#1b5e20] hover:shadow-md"
+                  : "border-gray-200 bg-white hover:border-[#bf5700] hover:shadow-md"
               }`}
               onClick={(e) => !unlocked && e.preventDefault()}
             >
@@ -68,9 +68,9 @@ export default function Home() {
                 <div
                   className={`text-3xl flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
                     completed
-                      ? "bg-green-100"
+                      ? "bg-[#1b5e20]/10"
                       : unlocked
-                      ? "bg-blue-100"
+                      ? "bg-[#bf5700]/10"
                       : "bg-gray-100"
                   }`}
                 >
@@ -85,17 +85,17 @@ export default function Home() {
                       {mod.estimatedTime}
                     </span>
                     {passed && (
-                      <span className="text-xs bg-green-200 text-green-800 px-2 py-0.5 rounded-full font-medium">
+                      <span className="text-xs bg-[#1b5e20] text-white px-2 py-0.5 rounded-full font-medium">
                         Passed — {score}%
                       </span>
                     )}
                     {score !== undefined && !passed && (
-                      <span className="text-xs bg-red-200 text-red-800 px-2 py-0.5 rounded-full font-medium">
+                      <span className="text-xs bg-[#bf5700] text-white px-2 py-0.5 rounded-full font-medium">
                         {score}% — Retry needed
                       </span>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-black">
                     {mod.title}
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
@@ -104,7 +104,7 @@ export default function Home() {
                   </p>
                 </div>
                 {unlocked && (
-                  <div className="flex-shrink-0 text-gray-400">
+                  <div className="flex-shrink-0 text-[#bf5700]">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -138,7 +138,7 @@ export default function Home() {
               resetProgress();
             }
           }}
-          className="text-sm text-gray-400 hover:text-red-500 transition-colors"
+          className="text-sm text-gray-400 hover:text-[#bf5700] transition-colors"
         >
           Reset Progress
         </button>

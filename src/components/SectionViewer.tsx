@@ -47,9 +47,9 @@ export default function SectionViewer({
             onClick={() => setCurrentIdx(i)}
             className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-all ${
               i === currentIdx
-                ? "bg-blue-600 text-white"
+                ? "bg-[#1b5e20] text-white"
                 : moduleSections.includes(s.id)
-                ? "bg-green-100 text-green-700 border border-green-300"
+                ? "bg-[#1b5e20]/10 text-[#1b5e20] border border-[#2e7d32]"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -60,15 +60,15 @@ export default function SectionViewer({
 
       {/* Section content */}
       <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border">
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-bold mb-6 text-black">
           {section.id} — {section.title}
         </h2>
         <div
           className="prose prose-lg max-w-none
-            prose-headings:text-gray-900 prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-6
+            prose-headings:text-black prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-6
             prose-p:text-gray-700 prose-li:text-gray-700
-            prose-table:text-sm prose-th:bg-gray-100 prose-th:p-3 prose-td:p-3 prose-td:border-t
-            prose-strong:text-gray-900
+            prose-table:text-sm prose-th:bg-[#1b5e20] prose-th:text-white prose-th:p-3 prose-td:p-3 prose-td:border-t
+            prose-strong:text-black
             prose-ul:space-y-1 prose-ol:space-y-1"
           dangerouslySetInnerHTML={{ __html: section.content }}
         />
@@ -88,7 +88,7 @@ export default function SectionViewer({
         </span>
         <button
           onClick={handleNext}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="px-6 py-2 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors"
         >
           {currentIdx < sections.length - 1
             ? "Next Section"

@@ -20,8 +20,8 @@ export default function ModulePage() {
   if (!mod) {
     return (
       <div className="max-w-4xl mx-auto p-8 text-center">
-        <h1 className="text-2xl font-bold">Module not found</h1>
-        <Link href="/" className="text-blue-600 hover:underline mt-4 block">
+        <h1 className="text-2xl font-bold text-black">Module not found</h1>
+        <Link href="/" className="text-[#bf5700] hover:underline mt-4 block">
           Back to Dashboard
         </Link>
       </div>
@@ -31,16 +31,16 @@ export default function ModulePage() {
   if (!isModuleUnlocked(moduleId)) {
     return (
       <div className="max-w-4xl mx-auto p-8 text-center">
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-8">
+        <div className="bg-[#bf5700]/10 border border-[#bf5700]/30 rounded-xl p-8">
           <div className="text-4xl mb-4">🔒</div>
-          <h1 className="text-2xl font-bold">Module Locked</h1>
+          <h1 className="text-2xl font-bold text-black">Module Locked</h1>
           <p className="text-gray-600 mt-2">
             Complete Module {moduleId - 1} with 80%+ quiz score to unlock this
             module.
           </p>
           <Link
             href="/"
-            className="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="inline-block mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg hover:bg-[#14431a]"
           >
             Back to Dashboard
           </Link>
@@ -59,22 +59,22 @@ export default function ModulePage() {
       <div className="mb-8">
         <Link
           href="/"
-          className="text-blue-600 hover:underline text-sm flex items-center gap-1 mb-4"
+          className="text-[#bf5700] hover:underline text-sm flex items-center gap-1 mb-4"
         >
           ← Back to Dashboard
         </Link>
         <div className="flex items-center gap-3 mb-2">
-          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-[#1b5e20] text-white px-3 py-1 rounded-full text-sm font-medium">
             Module {mod.id}
           </span>
           <span className="text-sm text-gray-500">{mod.estimatedTime}</span>
           {passed && (
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+            <span className="bg-[#1b5e20]/10 text-[#1b5e20] px-3 py-1 rounded-full text-sm font-medium border border-[#2e7d32]">
               Completed — {existingScore}%
             </span>
           )}
         </div>
-        <h1 className="text-3xl font-bold text-gray-900">{mod.title}</h1>
+        <h1 className="text-3xl font-bold text-black">{mod.title}</h1>
       </div>
 
       {/* Content or Quiz */}
@@ -86,7 +86,7 @@ export default function ModulePage() {
         />
       ) : (
         <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border">
-          <h2 className="text-2xl font-bold mb-6">
+          <h2 className="text-2xl font-bold mb-6 text-black">
             Module {mod.id} Quiz
           </h2>
           <Quiz
@@ -94,9 +94,6 @@ export default function ModulePage() {
             moduleId={moduleId}
             onComplete={(score) => {
               saveQuizScore(moduleId, score);
-              if (score >= 80 && nextModule) {
-                // Small delay then show success
-              }
             }}
           />
           {passed && (
@@ -104,7 +101,7 @@ export default function ModulePage() {
               {nextModule && (
                 <button
                   onClick={() => router.push(`/module/${nextModule.id}`)}
-                  className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  className="px-6 py-3 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors"
                 >
                   Continue to Module {nextModule.id} →
                 </button>

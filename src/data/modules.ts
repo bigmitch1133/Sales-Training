@@ -374,7 +374,7 @@ export const modules: Module[] = [
 <li><strong>Award</strong> — Contract awarded to winning vendor</li>
 <li><strong>Implementation</strong> — Solution deployed</li>
 </ol>
-<p class="mt-4 p-3 bg-amber-50 border-l-4 border-amber-400 rounded"><strong>Critical insight:</strong> The best time to engage is <strong>before step 4</strong>. Once an RFP is published, the game is largely already decided. NationGraph's early signals help you engage during steps 1-3.</p>`
+<p class="mt-4 p-3 bg-[#bf5700]/10 border-l-4 border-[#bf5700] rounded"><strong>Critical insight:</strong> The best time to engage is <strong>before step 4</strong>. Once an RFP is published, the game is largely already decided. NationGraph's early signals help you engage during steps 1-3.</p>`
       },
       {
         id: "3.3",
@@ -599,28 +599,28 @@ export const modules: Module[] = [
         content: `<p><strong>Objective:</strong> Get the prospect engaged by addressing their pain points and positioning NationGraph as the solution.</p>
 
 <div class="space-y-4 mt-4">
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">Opening:</p>
 <p class="italic">"Hi [Prospect's Name], this is [Your Name] from NationGraph. I know I caught you out of the blue — do you have 30 seconds?"</p>
 <p class="mt-2 text-sm">(If they hesitate →) "I'll be quick. If it's not relevant, you can hang up — fair?"</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">Problem Statement:</p>
 <p class="italic">"I speak with a lot of businesses selling to the government, and one of the biggest headaches I hear is the slow, unpredictable RFP process. By the time an RFP is public, it's a race to the bottom, and most contracts are already influenced by competitors who got in early. Does that sound familiar?"</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">NationGraph Solution:</p>
 <p class="italic">"NationGraph helps businesses get ahead of RFPs by using AI to track budget approvals, expiring contracts, and procurement signals — so you can engage agencies before your competitors even know an opportunity exists."</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">Qualifying Question:</p>
 <p class="italic">"How are you currently identifying government sales opportunities before they go public?"</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">Call to Action:</p>
 <p class="italic">"I'd love to show you how businesses like [similar company] are winning more government contracts using NationGraph. Would next Tuesday or Wednesday work for a quick walkthrough?"</p>
 <p class="mt-2 text-sm">(If they resist →) "I totally get it — this could be a game-changer for your pipeline. How about I send over some insights specific to your industry, and we can revisit in a few weeks?"</p>
@@ -671,7 +671,7 @@ export const modules: Module[] = [
 <li><strong>LinkedIn</strong> (connection requests, DMs, content engagement)</li>
 <li><strong>Text messages</strong> (for confirmed contacts)</li>
 </ul>
-<p class="mt-4 p-3 bg-amber-50 border-l-4 border-amber-400 rounded"><strong>Key principle:</strong> The phone is your most powerful weapon. Top AEs' first instinct is always to talk to a prospect. Before responding to a long email, <strong>pick up the phone and call.</strong></p>`
+<p class="mt-4 p-3 bg-[#bf5700]/10 border-l-4 border-[#bf5700] rounded"><strong>Key principle:</strong> The phone is your most powerful weapon. Top AEs' first instinct is always to talk to a prospect. Before responding to a long email, <strong>pick up the phone and call.</strong></p>`
       },
       {
         id: "4.6",
@@ -781,7 +781,7 @@ export const modules: Module[] = [
 <li>Wasted time (re-researching prospects you've already contacted)</li>
 <li>Lost institutional knowledge (when you move roles, your replacement has nothing)</li>
 </ul>
-<p class="mt-4 p-3 bg-red-50 border-l-4 border-red-400 rounded"><strong>Rule:</strong> If it didn't happen in the CRM, it didn't happen.</p>`
+<p class="mt-4 p-3 bg-black/5 border-l-4 border-black rounded"><strong>Rule:</strong> If it didn't happen in the CRM, it didn't happen.</p>`
       },
       {
         id: "5.2",
@@ -807,7 +807,7 @@ export const modules: Module[] = [
       {
         id: "5.3",
         title: "Pipeline Management Fundamentals",
-        content: `<p class="text-xl font-bold text-red-600 mb-4">"Time Kills All Deals"</p>
+        content: `<p class="text-xl font-bold text-[#bf5700] mb-4">"Time Kills All Deals"</p>
 <p>Deal cycles are not 3-4 months — <strong>they are 3-4 DECISIONS:</strong></p>
 <ol>
 <li>Starts with cold call — value prop (Do they want to learn more?)</li>
@@ -927,7 +927,7 @@ export const modules: Module[] = [
 <li>What is the outcome you desire? (Work backward from it)</li>
 </ul>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400 mt-4">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20] mt-4">
 <p class="font-semibold">Opening for every 1st Discovery Call:</p>
 <p class="italic">"Before the agenda — have to imagine you don't take meetings with every single partner, busy calendar... What prompted you to want to meet with us today?"</p>
 </div>`
@@ -957,7 +957,7 @@ export const modules: Module[] = [
 <li>"What is driving you to prioritize improving this among all your other initiatives?"</li>
 </ul>
 
-<p class="mt-4 p-3 bg-amber-50 border-l-4 border-amber-400 rounded"><strong>Critical rule:</strong> LISTEN — Don't always have a question tee'd up. The best questions come after listening.</p>`
+<p class="mt-4 p-3 bg-[#bf5700]/10 border-l-4 border-[#bf5700] rounded"><strong>Critical rule:</strong> LISTEN — Don't always have a question tee'd up. The best questions come after listening.</p>`
       },
       {
         id: "6.3",
@@ -998,7 +998,7 @@ export const modules: Module[] = [
         id: "6.4",
         title: "The 1-5 Exercise",
         content: `<p>Use this in the <strong>last 15 minutes of the call:</strong></p>
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="italic">"We've covered a lot. I want to ensure we're tracking in the right direction. I like to run this exercise with clients to make sure we're all on the same page:"</p>
 </div>
 
@@ -1054,17 +1054,17 @@ export const modules: Module[] = [
         content: `<p><strong>Every call must end with clear next steps:</strong></p>
 
 <div class="space-y-4 mt-4">
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">"Do you wanna buy?"</p>
 <p class="italic">Typically at the end of this call, you have a sense of where we might be helpful. Be completely honest, is it worth taking a deeper look or meh?</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">"When?"</p>
 <p class="italic">Just so I make sure I'm aware of any big timelines, when's the latest you'd wanna have something like this in place?</p>
 </div>
 
-<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20]">
 <p class="font-semibold">"How?"</p>
 <p class="italic">Well typically from here we'd do a deeper dive with you and your ___. And if that goes well, we cover price. Sound like a plan?</p>
 </div>
@@ -1162,13 +1162,13 @@ export const modules: Module[] = [
 </table>
 
 <p class="mt-4"><strong>Best Case or "Gap Deals":</strong> What's the next step we need? If we don't get that next step, don't count on it.</p>
-<p class="mt-4 p-3 bg-red-50 border-l-4 border-red-400 rounded"><strong>The #1 sales flaw in forecasting:</strong> Not being able to answer: <em>"What is the compelling event that will cause the customer to convert?"</em></p>`
+<p class="mt-4 p-3 bg-black/5 border-l-4 border-black rounded"><strong>The #1 sales flaw in forecasting:</strong> Not being able to answer: <em>"What is the compelling event that will cause the customer to convert?"</em></p>`
       },
       {
         id: "7.3",
         title: "The Full Sales Playbook Flow",
         content: `<div class="space-y-4">
-<div class="p-4 bg-blue-50 rounded-lg">
+<div class="p-4 bg-[#1b5e20]/5 rounded-lg border-l-4 border-[#1b5e20]/30">
 <h4>1) Prospecting/Pipeline Generation (PG)</h4>
 <ul>
 <li>Target: Businesses that sell to government (any B2G company)</li>
@@ -1178,7 +1178,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-green-50 rounded-lg">
+<div class="p-4 bg-[#1b5e20]/8 rounded-lg border-l-4 border-[#1b5e20]/40">
 <h4>2) Qualification (MEDDIC/MIC)</h4>
 <ul>
 <li>Do NOT skip "cost of inaction" → Quantify Pain, find Metrics that Matter!</li>
@@ -1187,7 +1187,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-yellow-50 rounded-lg">
+<div class="p-4 bg-[#bf5700]/5 rounded-lg border-l-4 border-[#bf5700]/30">
 <h4>3) Champion Building</h4>
 <ul>
 <li>Find + Build Pain</li>
@@ -1197,7 +1197,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-purple-50 rounded-lg">
+<div class="p-4 bg-[#bf5700]/8 rounded-lg border-l-4 border-[#bf5700]/40">
 <h4>4) Economic Buyer (EB) Access</h4>
 <ul>
 <li>PREP BEFORE CALL IS CRITICAL</li>
@@ -1206,7 +1206,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-indigo-50 rounded-lg">
+<div class="p-4 bg-black/5 rounded-lg border-l-4 border-black/20">
 <h4>5) Mutual Action Plan (MAP)</h4>
 <ul>
 <li>Help them through the evaluation journey together</li>
@@ -1216,7 +1216,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-orange-50 rounded-lg">
+<div class="p-4 bg-[#bf5700]/10 rounded-lg border-l-4 border-[#bf5700]/50">
 <h4>6) Proposal & Negotiation</h4>
 <ul>
 <li>Build value throughout the sales process</li>
@@ -1226,7 +1226,7 @@ export const modules: Module[] = [
 </ul>
 </div>
 
-<div class="p-4 bg-red-50 rounded-lg">
+<div class="p-4 bg-black/5 rounded-lg border-l-4 border-black/30">
 <h4>7) Close</h4>
 <ul>
 <li>Confirm kickoff call on calendar</li>
@@ -1240,7 +1240,7 @@ export const modules: Module[] = [
       {
         id: "7.4",
         title: "Key Principles",
-        content: `<div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400 mb-4">
+        content: `<div class="p-4 bg-[#1b5e20]/10 rounded-lg border-l-4 border-[#1b5e20] mb-4">
 <p class="text-lg font-bold">"EVERY CALL: Purpose, Plan, Outcome"</p>
 <ul>
 <li><strong>Purpose:</strong> What are we trying to accomplish?</li>
@@ -1266,7 +1266,7 @@ export const modules: Module[] = [
 <li>Customer stories should include emotional impact</li>
 </ul>
 
-<p class="mt-4 p-3 bg-green-50 border-l-4 border-green-400 rounded"><strong>The #1 Rule in Sales:</strong> CARE ABOUT YOUR CUSTOMER. Sales is about helping a person solve a problem. Don't "act like a Sales Rep" → act like a Peer.</p>`
+<p class="mt-4 p-3 bg-[#1b5e20]/10 border-l-4 border-[#1b5e20] rounded"><strong>The #1 Rule in Sales:</strong> CARE ABOUT YOUR CUSTOMER. Sales is about helping a person solve a problem. Don't "act like a Sales Rep" → act like a Peer.</p>`
       },
       {
         id: "7.5",
