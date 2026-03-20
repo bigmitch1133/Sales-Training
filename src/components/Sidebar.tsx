@@ -14,7 +14,7 @@ export default function Sidebar() {
   const { user, logout, loading } = useAuth();
   const { completedModules, quizScores, isModuleUnlocked } = useProgress();
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   if (loading || !user || pathname === "/login") return null;
 
