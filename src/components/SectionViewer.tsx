@@ -45,12 +45,12 @@ export default function SectionViewer({
           <button
             key={s.id}
             onClick={() => setCurrentIdx(i)}
-            className={`px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-all ${
+            className={`px-3 py-1.5 rounded-full text-sm font-brand whitespace-nowrap transition-all ${
               i === currentIdx
                 ? "bg-[#1b5e20] text-white"
                 : moduleSections.includes(s.id)
-                ? "bg-[#1b5e20]/10 text-[#1b5e20] border border-[#2e7d32]"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-[#1b5e20]/15 text-[#4caf50] border border-[#2e7d32]/40"
+                : "bg-[#1a1a1a] text-gray-400 hover:bg-[#222] border border-[#2a2a2a]"
             }`}
           >
             {s.id} {s.title}
@@ -59,17 +59,12 @@ export default function SectionViewer({
       </div>
 
       {/* Section content */}
-      <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border">
-        <h2 className="text-2xl font-bold mb-6 text-black">
+      <div className="bg-[#141414] rounded-xl p-6 md:p-8 border border-[#2a2a2a]">
+        <h2 className="text-2xl font-brand font-bold mb-6 text-white">
           {section.id} — {section.title}
         </h2>
         <div
-          className="prose prose-lg max-w-none
-            prose-headings:text-black prose-h4:text-lg prose-h4:font-semibold prose-h4:mt-6
-            prose-p:text-gray-700 prose-li:text-gray-700
-            prose-table:text-sm prose-th:bg-[#1b5e20] prose-th:text-white prose-th:p-3 prose-td:p-3 prose-td:border-t
-            prose-strong:text-black
-            prose-ul:space-y-1 prose-ol:space-y-1"
+          className="prose prose-lg prose-invert max-w-none font-brand"
           dangerouslySetInnerHTML={{ __html: section.content }}
         />
       </div>
@@ -79,16 +74,16 @@ export default function SectionViewer({
         <button
           onClick={handlePrev}
           disabled={currentIdx === 0}
-          className="px-6 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-2 rounded-lg border border-[#2a2a2a] text-gray-400 hover:bg-[#1a1a1a] disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-brand"
         >
           Previous
         </button>
-        <span className="text-sm text-gray-500">
+        <span className="text-sm text-gray-500 font-brand">
           {currentIdx + 1} of {sections.length}
         </span>
         <button
           onClick={handleNext}
-          className="px-6 py-2 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors"
+          className="px-6 py-2 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors font-brand font-medium"
         >
           {currentIdx < sections.length - 1
             ? "Next Section"

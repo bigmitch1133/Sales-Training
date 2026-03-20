@@ -32,20 +32,20 @@ function MultipleChoice({
           <button
             key={i}
             onClick={() => !submitted && setSelected(i)}
-            className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
+            className={`w-full text-left p-3 rounded-lg border transition-all font-brand ${
               submitted
                 ? i === q.correct
-                  ? "border-[#1b5e20] bg-[#1b5e20]/10"
+                  ? "border-[#2e7d32] bg-[#1b5e20]/15 text-white"
                   : i === selected
-                  ? "border-red-600 bg-red-50"
-                  : "border-gray-200"
+                  ? "border-red-700 bg-red-900/20 text-red-300"
+                  : "border-[#2a2a2a] text-gray-400"
                 : i === selected
-                ? "border-[#bf5700] bg-[#bf5700]/10"
-                : "border-gray-200 hover:border-gray-300"
+                ? "border-[#bf5700] bg-[#bf5700]/10 text-white"
+                : "border-[#2a2a2a] text-gray-300 hover:border-[#3a3a3a] hover:bg-[#1a1a1a]"
             }`}
             disabled={submitted}
           >
-            <span className="font-medium mr-2">
+            <span className="font-medium mr-2 text-gray-500">
               {String.fromCharCode(65 + i)}.
             </span>
             {opt}
@@ -56,7 +56,7 @@ function MultipleChoice({
         <button
           onClick={handleSubmit}
           disabled={selected === null}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
@@ -65,14 +65,14 @@ function MultipleChoice({
         <div
           className={`mt-4 p-4 rounded-lg ${
             selected === q.correct
-              ? "bg-[#1b5e20]/10 border border-[#2e7d32]"
-              : "bg-red-50 border border-red-200"
+              ? "bg-[#1b5e20]/15 border border-[#2e7d32]/40"
+              : "bg-red-900/15 border border-red-800/40"
           }`}
         >
-          <p className="font-semibold">
+          <p className="font-brand font-semibold text-white">
             {selected === q.correct ? "Correct!" : "Incorrect"}
           </p>
-          <p className="mt-1 text-sm">{q.explanation}</p>
+          <p className="mt-1 text-sm text-gray-400 font-brand">{q.explanation}</p>
         </div>
       )}
     </div>
@@ -102,16 +102,16 @@ function TrueFalse({
           <button
             key={String(val)}
             onClick={() => !submitted && setSelected(val)}
-            className={`flex-1 p-4 rounded-lg border-2 text-center font-semibold transition-all ${
+            className={`flex-1 p-4 rounded-lg border text-center font-brand font-semibold transition-all ${
               submitted
                 ? val === q.correct
-                  ? "border-[#1b5e20] bg-[#1b5e20]/10"
+                  ? "border-[#2e7d32] bg-[#1b5e20]/15 text-white"
                   : val === selected
-                  ? "border-red-600 bg-red-50"
-                  : "border-gray-200"
+                  ? "border-red-700 bg-red-900/20 text-red-300"
+                  : "border-[#2a2a2a] text-gray-500"
                 : val === selected
-                ? "border-[#bf5700] bg-[#bf5700]/10"
-                : "border-gray-200 hover:border-gray-300"
+                ? "border-[#bf5700] bg-[#bf5700]/10 text-white"
+                : "border-[#2a2a2a] text-gray-300 hover:border-[#3a3a3a] hover:bg-[#1a1a1a]"
             }`}
             disabled={submitted}
           >
@@ -123,7 +123,7 @@ function TrueFalse({
         <button
           onClick={handleSubmit}
           disabled={selected === null}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
@@ -132,14 +132,14 @@ function TrueFalse({
         <div
           className={`mt-4 p-4 rounded-lg ${
             selected === q.correct
-              ? "bg-[#1b5e20]/10 border border-[#2e7d32]"
-              : "bg-red-50 border border-red-200"
+              ? "bg-[#1b5e20]/15 border border-[#2e7d32]/40"
+              : "bg-red-900/15 border border-red-800/40"
           }`}
         >
-          <p className="font-semibold">
+          <p className="font-brand font-semibold text-white">
             {selected === q.correct ? "Correct!" : "Incorrect"}
           </p>
-          <p className="mt-1 text-sm">{q.explanation}</p>
+          <p className="mt-1 text-sm text-gray-400 font-brand">{q.explanation}</p>
         </div>
       )}
     </div>
@@ -176,30 +176,30 @@ function SelectAll({
 
   return (
     <div>
-      <p className="text-sm text-gray-500 mb-3">Select all that apply</p>
+      <p className="text-sm text-gray-500 mb-3 font-brand">Select all that apply</p>
       <div className="space-y-2">
         {q.options!.map((opt, i) => (
           <button
             key={i}
             onClick={() => toggle(i)}
-            className={`w-full text-left p-3 rounded-lg border-2 transition-all flex items-center gap-3 ${
+            className={`w-full text-left p-3 rounded-lg border transition-all flex items-center gap-3 font-brand ${
               submitted
                 ? correctArr.includes(i)
-                  ? "border-[#1b5e20] bg-[#1b5e20]/10"
+                  ? "border-[#2e7d32] bg-[#1b5e20]/15 text-white"
                   : selected.includes(i)
-                  ? "border-red-600 bg-red-50"
-                  : "border-gray-200"
+                  ? "border-red-700 bg-red-900/20 text-red-300"
+                  : "border-[#2a2a2a] text-gray-400"
                 : selected.includes(i)
-                ? "border-[#bf5700] bg-[#bf5700]/10"
-                : "border-gray-200 hover:border-gray-300"
+                ? "border-[#bf5700] bg-[#bf5700]/10 text-white"
+                : "border-[#2a2a2a] text-gray-300 hover:border-[#3a3a3a] hover:bg-[#1a1a1a]"
             }`}
             disabled={submitted}
           >
             <div
-              className={`w-5 h-5 rounded border-2 flex items-center justify-center text-xs ${
+              className={`w-5 h-5 rounded border flex items-center justify-center text-xs ${
                 selected.includes(i)
                   ? "border-[#bf5700] bg-[#bf5700] text-white"
-                  : "border-gray-300"
+                  : "border-gray-600"
               }`}
             >
               {selected.includes(i) && "✓"}
@@ -212,20 +212,20 @@ function SelectAll({
         <button
           onClick={handleSubmit}
           disabled={selected.length === 0}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
       )}
       {submitted && (
-        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/10 border border-[#2e7d32]">
-          <p className="font-semibold">
+        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/15 border border-[#2e7d32]/40">
+          <p className="font-brand font-semibold text-white">
             {selected.length === correctArr.length &&
             selected.every((s) => correctArr.includes(s))
               ? "Correct!"
               : "Not quite right"}
           </p>
-          <p className="mt-1 text-sm">{q.explanation}</p>
+          <p className="mt-1 text-sm text-gray-400 font-brand">{q.explanation}</p>
         </div>
       )}
     </div>
@@ -244,7 +244,6 @@ function Matching({
   const [submitted, setSubmitted] = useState(false);
   const [activeTerm, setActiveTerm] = useState<number | null>(null);
 
-  // Shuffled definitions
   const [shuffledDefs] = useState(() => {
     const indices = pairs.map((_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
@@ -268,26 +267,26 @@ function Matching({
 
   return (
     <div>
-      <p className="text-sm text-gray-500 mb-3">
+      <p className="text-sm text-gray-500 mb-3 font-brand">
         Click a term, then click its matching definition
       </p>
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <p className="font-semibold text-sm text-gray-600">Terms</p>
+          <p className="font-brand font-semibold text-sm text-gray-500">Terms</p>
           {pairs.map((p, i) => (
             <button
               key={i}
               onClick={() => !submitted && setActiveTerm(i)}
-              className={`w-full text-left p-3 rounded-lg border-2 transition-all text-sm ${
+              className={`w-full text-left p-3 rounded-lg border transition-all text-sm font-brand ${
                 submitted
                   ? matches[i] === i
-                    ? "border-[#1b5e20] bg-[#1b5e20]/10"
-                    : "border-red-600 bg-red-50"
+                    ? "border-[#2e7d32] bg-[#1b5e20]/15 text-white"
+                    : "border-red-700 bg-red-900/20 text-red-300"
                   : activeTerm === i
-                  ? "border-[#bf5700] bg-[#bf5700]/10"
+                  ? "border-[#bf5700] bg-[#bf5700]/10 text-white"
                   : matches[i] !== undefined
-                  ? "border-[#bf5700]/50 bg-[#bf5700]/5"
-                  : "border-gray-200 hover:border-gray-300"
+                  ? "border-[#bf5700]/40 bg-[#bf5700]/5 text-gray-300"
+                  : "border-[#2a2a2a] text-gray-300 hover:border-[#3a3a3a]"
               }`}
               disabled={submitted}
             >
@@ -301,15 +300,15 @@ function Matching({
           ))}
         </div>
         <div className="space-y-2">
-          <p className="font-semibold text-sm text-gray-600">Definitions</p>
+          <p className="font-brand font-semibold text-sm text-gray-500">Definitions</p>
           {shuffledDefs.map((defIdx) => (
             <button
               key={defIdx}
               onClick={() => handleDefClick(defIdx)}
-              className={`w-full text-left p-3 rounded-lg border-2 transition-all text-sm ${
+              className={`w-full text-left p-3 rounded-lg border transition-all text-sm font-brand ${
                 activeTerm !== null
-                  ? "border-gray-200 hover:border-[#bf5700] hover:bg-[#bf5700]/10"
-                  : "border-gray-200"
+                  ? "border-[#2a2a2a] text-gray-300 hover:border-[#bf5700] hover:bg-[#bf5700]/10"
+                  : "border-[#2a2a2a] text-gray-400"
               }`}
               disabled={submitted || activeTerm === null}
             >
@@ -322,19 +321,19 @@ function Matching({
         <button
           onClick={handleSubmit}
           disabled={Object.keys(matches).length < pairs.length}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
       )}
       {submitted && (
-        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/10 border border-[#2e7d32]">
-          <p className="font-semibold">
+        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/15 border border-[#2e7d32]/40">
+          <p className="font-brand font-semibold text-white">
             {pairs.every((_, i) => matches[i] === i)
               ? "All correct!"
               : "Some matches were incorrect"}
           </p>
-          <p className="mt-1 text-sm">{q.explanation}</p>
+          <p className="mt-1 text-sm text-gray-400 font-brand">{q.explanation}</p>
         </div>
       )}
     </div>
@@ -382,8 +381,8 @@ function Ordering({
 
   return (
     <div>
-      <p className="text-sm text-gray-500 mb-3">
-        Drag or use arrows to put items in the correct order
+      <p className="text-sm text-gray-500 mb-3 font-brand">
+        Use arrows to put items in the correct order
       </p>
       <div className="space-y-2">
         {order.map((itemIdx, pos) => {
@@ -391,15 +390,15 @@ function Ordering({
           return (
             <div
               key={itemIdx}
-              className={`flex items-center gap-3 p-3 rounded-lg border-2 transition-all ${
+              className={`flex items-center gap-3 p-3 rounded-lg border transition-all font-brand ${
                 submitted
                   ? isCorrectPosition
-                    ? "border-[#1b5e20] bg-[#1b5e20]/10"
-                    : "border-red-600 bg-red-50"
-                  : "border-gray-200"
+                    ? "border-[#2e7d32] bg-[#1b5e20]/15 text-white"
+                    : "border-red-700 bg-red-900/20 text-red-300"
+                  : "border-[#2a2a2a] text-gray-300"
               }`}
             >
-              <span className="text-sm font-bold text-gray-400 w-6">
+              <span className="text-sm font-bold text-gray-600 w-6">
                 {pos + 1}.
               </span>
               <span className="flex-1">{q.items![itemIdx]}</span>
@@ -407,14 +406,14 @@ function Ordering({
                 <div className="flex flex-col gap-1">
                   <button
                     onClick={() => moveUp(pos)}
-                    className="text-gray-400 hover:text-[#bf5700] text-xs px-1"
+                    className="text-gray-600 hover:text-[#bf5700] text-xs px-1"
                     disabled={pos === 0}
                   >
                     ▲
                   </button>
                   <button
                     onClick={() => moveDown(pos)}
-                    className="text-gray-400 hover:text-[#bf5700] text-xs px-1"
+                    className="text-gray-600 hover:text-[#bf5700] text-xs px-1"
                     disabled={pos === order.length - 1}
                   >
                     ▼
@@ -428,25 +427,25 @@ function Ordering({
       {!submitted && (
         <button
           onClick={handleSubmit}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
       )}
       {submitted && (
-        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/10 border border-[#2e7d32]">
-          <p className="font-semibold">
+        <div className="mt-4 p-4 rounded-lg bg-[#1b5e20]/15 border border-[#2e7d32]/40">
+          <p className="font-brand font-semibold text-white">
             {order.every((itemIdx, pos) => itemIdx === q.correct_order![pos])
               ? "Perfect order!"
               : "Not quite right"}
           </p>
-          <p className="mt-1 text-sm">{q.explanation}</p>
+          <p className="mt-1 text-sm text-gray-400 font-brand">{q.explanation}</p>
           {!order.every(
             (itemIdx, pos) => itemIdx === q.correct_order![pos]
           ) && (
             <div className="mt-2">
-              <p className="text-sm font-medium">Correct order:</p>
-              <ol className="text-sm list-decimal list-inside">
+              <p className="text-sm font-brand font-medium text-gray-300">Correct order:</p>
+              <ol className="text-sm list-decimal list-inside text-gray-400 font-brand">
                 {q.correct_order!.map((idx) => (
                   <li key={idx}>{q.items![idx]}</li>
                 ))}
@@ -471,7 +470,6 @@ function FreeResponse({
 
   const handleSubmit = () => {
     setSubmitted(true);
-    // Free response is always "correct" for scoring — flagged for manager review
     onAnswer(response.trim().length >= 20);
   };
 
@@ -480,7 +478,7 @@ function FreeResponse({
       <textarea
         value={response}
         onChange={(e) => !submitted && setResponse(e.target.value)}
-        className="w-full p-4 border-2 border-gray-200 rounded-lg min-h-[120px] focus:border-[#1b5e20] focus:outline-none resize-y"
+        className="w-full p-4 border border-[#2a2a2a] bg-[#0a0a0a] text-gray-200 rounded-lg min-h-[120px] focus:border-[#1b5e20] focus:outline-none resize-y font-brand placeholder:text-gray-600"
         placeholder="Type your answer here..."
         disabled={submitted}
       />
@@ -488,29 +486,29 @@ function FreeResponse({
         <button
           onClick={handleSubmit}
           disabled={response.trim().length < 20}
-          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors"
+          className="mt-4 px-6 py-2 bg-[#1b5e20] text-white rounded-lg disabled:opacity-50 hover:bg-[#14431a] transition-colors font-brand font-medium"
         >
           Submit Answer
         </button>
       )}
       {submitted && (
         <div className="mt-4 space-y-3">
-          <div className="p-4 rounded-lg bg-[#1b5e20]/10 border border-[#2e7d32]">
-            <p className="font-semibold">Answer submitted for review</p>
-            <p className="text-sm text-gray-600 mt-1">
+          <div className="p-4 rounded-lg bg-[#1b5e20]/15 border border-[#2e7d32]/40">
+            <p className="font-brand font-semibold text-white">Answer submitted for review</p>
+            <p className="text-sm text-gray-400 mt-1 font-brand">
               Free response questions are reviewed by your manager.
             </p>
           </div>
           {q.sample_answer && (
-            <div className="p-4 rounded-lg bg-gray-50 border border-gray-200">
-              <p className="font-semibold text-sm">Sample answer:</p>
-              <p className="text-sm mt-1">{q.sample_answer}</p>
+            <div className="p-4 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a]">
+              <p className="font-brand font-semibold text-sm text-gray-300">Sample answer:</p>
+              <p className="text-sm mt-1 text-gray-400 font-brand">{q.sample_answer}</p>
             </div>
           )}
           {q.grading_criteria && (
             <div className="p-4 rounded-lg bg-[#bf5700]/10 border border-[#bf5700]/30">
-              <p className="font-semibold text-sm">Grading criteria:</p>
-              <p className="text-sm mt-1">{q.grading_criteria}</p>
+              <p className="font-brand font-semibold text-sm text-[#e06800]">Grading criteria:</p>
+              <p className="text-sm mt-1 text-gray-400 font-brand">{q.grading_criteria}</p>
             </div>
           )}
         </div>
@@ -552,16 +550,16 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
     return (
       <div className="text-center py-8">
         <div
-          className={`text-6xl font-bold ${
-            passed ? "text-[#1b5e20]" : "text-[#bf5700]"
+          className={`text-6xl font-brand font-bold ${
+            passed ? "text-[#4caf50]" : "text-[#bf5700]"
           }`}
         >
           {score}%
         </div>
-        <p className="text-xl mt-2 font-medium text-black">
+        <p className="text-xl mt-2 font-brand font-medium text-white">
           {passed ? "Congratulations! You passed!" : "Not quite — try again!"}
         </p>
-        <p className="text-gray-600 mt-1">
+        <p className="text-gray-500 mt-1 font-brand">
           {results.filter(Boolean).length} of {questions.length} correct
           {!passed && " (80% required to proceed)"}
         </p>
@@ -572,7 +570,7 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
               setResults([]);
               setFinished(false);
             }}
-            className="mt-6 px-6 py-3 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors"
+            className="mt-6 px-6 py-3 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors font-brand font-medium"
           >
             Retry Quiz
           </button>
@@ -587,7 +585,7 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <span className="text-sm font-medium text-gray-500">
+        <span className="text-sm font-brand font-medium text-gray-500">
           Question {currentQ + 1} of {questions.length}
         </span>
         <div className="flex gap-1">
@@ -598,17 +596,17 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
                 i < results.length
                   ? results[i]
                     ? "bg-[#1b5e20]"
-                    : "bg-red-500"
+                    : "bg-red-700"
                   : i === currentQ
                   ? "bg-[#bf5700]"
-                  : "bg-gray-200"
+                  : "bg-[#2a2a2a]"
               }`}
             />
           ))}
         </div>
       </div>
 
-      <h3 className="text-lg font-semibold mb-4 text-black">{q.question}</h3>
+      <h3 className="text-lg font-brand font-semibold mb-4 text-white">{q.question}</h3>
 
       {q.type === "multiple_choice" && (
         <MultipleChoice key={q.id} q={q} onAnswer={handleAnswer} />
@@ -633,7 +631,7 @@ export default function Quiz({ questions, moduleId, onComplete }: QuizProps) {
         <div className="mt-6 flex justify-end">
           <button
             onClick={handleNext}
-            className="px-6 py-2 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors"
+            className="px-6 py-2 bg-[#bf5700] text-white rounded-lg hover:bg-[#a04a00] transition-colors font-brand font-medium"
           >
             {currentQ < questions.length - 1 ? "Next Question" : "Finish Quiz"}
           </button>

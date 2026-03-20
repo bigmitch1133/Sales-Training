@@ -12,14 +12,14 @@ export default function ProgressBar() {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-medium text-white/80">
+        <span className="text-sm font-brand font-medium text-white/60">
           Overall Progress
         </span>
-        <span className="text-sm font-medium text-white/80">
+        <span className="text-sm font-brand font-medium text-white/60">
           {completed}/{totalModules} modules ({percentage}%)
         </span>
       </div>
-      <div className="w-full bg-black/30 rounded-full h-3">
+      <div className="w-full bg-white/10 rounded-full h-3">
         <div
           className="bg-gradient-to-r from-[#bf5700] to-[#e06800] h-3 rounded-full transition-all duration-500"
           style={{ width: `${percentage}%` }}
@@ -36,8 +36,8 @@ export default function ProgressBar() {
                 isComplete
                   ? score && score >= 80
                     ? "bg-[#bf5700]"
-                    : "bg-yellow-500"
-                  : "bg-white/20"
+                    : "bg-yellow-600"
+                  : "bg-white/10"
               }`}
               title={`Module ${m.id}${score ? `: ${score}%` : ""}`}
             />

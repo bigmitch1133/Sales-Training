@@ -631,7 +631,7 @@ export const modules: Module[] = [
         id: "4.4",
         title: "Cold Email Templates",
         content: `<h4>Template 1 — Standard Outbound:</h4>
-<div class="p-4 bg-gray-50 rounded-lg border mt-2 mb-4">
+<div class="p-4 bg-white/5 rounded-lg border border-[#2a2a2a] mt-2 mb-4">
 <p class="font-semibold">Subject: Get ahead of RFPs — before your competitors do</p>
 <p class="mt-2">Hi [First Name],</p>
 <p class="mt-2">I know selling to the government can be frustrating — by the time an RFP is public, the decision is often already influenced, and vendors are stuck in a pricing war.</p>
@@ -656,7 +656,7 @@ export const modules: Module[] = [
         id: "4.5",
         title: "LinkedIn & Multi-Channel Strategy",
         content: `<h4>LinkedIn Direct Message Template:</h4>
-<div class="p-4 bg-gray-50 rounded-lg border mt-2 mb-4">
+<div class="p-4 bg-white/5 rounded-lg border border-[#2a2a2a] mt-2 mb-4">
 <p>Hi [First Name],</p>
 <p class="mt-2">I work with businesses that sell to the government, and one of the biggest frustrations I hear is how difficult it is to get ahead of RFPs before they go public.</p>
 <p class="mt-2">At NationGraph, we use AI to track budget approvals, expiring contracts, and procurement signals so companies can engage agencies before competitors even know an opportunity exists.</p>
@@ -781,7 +781,7 @@ export const modules: Module[] = [
 <li>Wasted time (re-researching prospects you've already contacted)</li>
 <li>Lost institutional knowledge (when you move roles, your replacement has nothing)</li>
 </ul>
-<p class="mt-4 p-3 bg-black/5 border-l-4 border-black rounded"><strong>Rule:</strong> If it didn't happen in the CRM, it didn't happen.</p>`
+<p class="mt-4 p-3 bg-white/5 border-l-4 border-[#bf5700] rounded"><strong>Rule:</strong> If it didn't happen in the CRM, it didn't happen.</p>`
       },
       {
         id: "5.2",
@@ -1162,7 +1162,7 @@ export const modules: Module[] = [
 </table>
 
 <p class="mt-4"><strong>Best Case or "Gap Deals":</strong> What's the next step we need? If we don't get that next step, don't count on it.</p>
-<p class="mt-4 p-3 bg-black/5 border-l-4 border-black rounded"><strong>The #1 sales flaw in forecasting:</strong> Not being able to answer: <em>"What is the compelling event that will cause the customer to convert?"</em></p>`
+<p class="mt-4 p-3 bg-white/5 border-l-4 border-[#bf5700] rounded"><strong>The #1 sales flaw in forecasting:</strong> Not being able to answer: <em>"What is the compelling event that will cause the customer to convert?"</em></p>`
       },
       {
         id: "7.3",
