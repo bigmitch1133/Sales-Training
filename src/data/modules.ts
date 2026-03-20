@@ -222,7 +222,7 @@ export const modules: Module[] = [
 <li><strong>Lead Qualification</strong> — Determine if a prospect is a good fit for NationGraph based on their role, target market, and pain points</li>
 <li><strong>Meeting Setting</strong> — Book qualified demo meetings for the AE team</li>
 <li><strong>Product Knowledge</strong> — Deeply understand NationGraph's platform, features, and value proposition so you can articulate it clearly</li>
-<li><strong>CRM Management</strong> — Maintain an organized CRM (Salespipe) to track all interactions and manage leads efficiently</li>
+<li><strong>CRM Management</strong> — Maintain an organized CRM (HubSpot) to track all interactions and manage leads efficiently</li>
 <li><strong>Continuous Learning</strong> — Stay updated on industry trends, sales techniques, government procurement changes, and product knowledge</li>
 </ol>`
       },
@@ -292,8 +292,8 @@ export const modules: Module[] = [
         type: "multiple_choice",
         question: "What CRM does NationGraph's sales team use?",
         options: ["Salesforce", "HubSpot", "Salespipe", "Pipedrive"],
-        correct: 2,
-        explanation: "NationGraph uses Salespipe as their CRM to track interactions and manage leads."
+        correct: 1,
+        explanation: "NationGraph uses HubSpot as their CRM to track interactions and manage leads."
       },
       {
         id: "2.3",
@@ -773,7 +773,7 @@ export const modules: Module[] = [
       {
         id: "5.1",
         title: "Why CRM Hygiene Matters",
-        content: `<p>Your CRM (Salespipe) is the single source of truth for your sales activity. Poor CRM hygiene leads to:</p>
+        content: `<p>Your CRM (HubSpot) is the single source of truth for your sales activity. Poor CRM hygiene leads to:</p>
 <ul>
 <li>Lost opportunities (forgetting to follow up)</li>
 <li>Duplicate outreach (embarrassing and unprofessional)</li>
