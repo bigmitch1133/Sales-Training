@@ -88,3 +88,21 @@ body {
 .prose li {
   color: #d4d4d4;
 }
+
+/* Highlight leading bold text in list items for scannability */
+.prose li > strong:first-child,
+.prose ol > li > strong:first-child,
+.prose ul > li > strong:first-child {
+  color: #e8930c;
+}
+
+/* Numbered list leading bold */
+.prose ol > li::marker {
+  color: #e8930c;
+  font-weight: 600;
+}
+
+/* Bullet list markers */
+.prose ul > li::marker {
+  color: #2e7d32;
+}
