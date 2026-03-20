@@ -9,6 +9,7 @@ import {
   useCallback,
   ReactNode,
 } from "react";
+import { useAuth } from "@/components/AuthProvider";
 
 export interface QuizAnswerRecord {
   questionId: string;
@@ -55,6 +56,7 @@ export default function ProgressProvider({
   >({});
   const [loaded, setLoaded] = useState(false);
   const syncTimeout = useRef<ReturnType<typeof setTimeout>>(null);
+  const { user } = useAuth();
 
   // Load from server on mount
   useEffect(() => {
@@ -128,6 +130,7 @@ export default function ProgressProvider({
   };
 
   const isModuleUnlocked = (moduleId: number) => {
+    if (user?.isAdmin) return true;
     if (moduleId === 1) return true;
     return completedModules.includes(moduleId - 1);
   };
